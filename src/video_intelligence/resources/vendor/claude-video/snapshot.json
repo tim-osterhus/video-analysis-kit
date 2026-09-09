@@ -18,8 +18,16 @@
     "skills/watch/scripts/download.py": "e3db8c8418a0372a533fedaf6c4481c5859849c81279e0f6cb139e4055081f91",
     "skills/watch/scripts/whisper.py": "4845e95d7467b1d4d393275a9d8fadda07d34c9822d6cee0b7ebebcfd70e1462",
     "skills/watch/scripts/setup.py": "c8d2906fc4e8047c9d4006ac37572be5cbd0ae6ed11380743283e877564406b1",
-    "skills/watch/scripts/frames.py": "ad317574facd619ff0c5ccbbb86a08b76abc8419c81107d179dbe2a3ba526ae6",
+    "skills/watch/scripts/frames.py": "ec77c58e38ac205900ca07ab48f5c32889cb95c029aaddeb691d050b93514c0c",
     "skills/watch/scripts/transcribe.py": "f9736e126d3f3c41d72cceed75e50b7bdeb0f8a9bdafe5bdbdd8592ea8af7ab6",
     "skills/watch/scripts/watch.py": "22a617de949781067ba22d90b64355231cf09c92b3a144ee9c3a5e26f0062e3a"
-  }
+  },
+  "patches": [
+    {
+      "file": "skills/watch/scripts/frames.py",
+      "base_sha256": "ad317574facd619ff0c5ccbbb86a08b76abc8419c81107d179dbe2a3ba526ae6",
+      "description": "Replace removed -vsync with -fps_mode in scene and keyframe extraction for FFmpeg 9 compatibility.",
+      "upstream_issue": "https://github.com/bradautomates/claude-video/issues/126"
+    }
+  ]
 }

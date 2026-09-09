@@ -26,7 +26,7 @@ Select one installation:
 | Speech recognition on CPU or a compatible Linux CUDA setup | `uv pip install --python .venv/bin/python '.[cpu]'` | `faster-whisper` |
 | Client that uses an SSH worker | `uv pip install --python .venv/bin/python .` | Selected on worker |
 
-Install FFmpeg on the processing machine, using the package manager already available there. Homebrew on macOS:
+Install FFmpeg 5.1 or newer on the processing machine, using the package manager already available there. Homebrew on macOS:
 
 ```bash
 brew install ffmpeg

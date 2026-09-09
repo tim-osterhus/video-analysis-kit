@@ -27,7 +27,7 @@ Model tests cover explicit download receipts, offline inference arguments, incom
 
 ## Remaining validation limits
 
-- Linux and CUDA hardware were not available for this verification. The repository includes a GitHub Actions matrix for Ubuntu and macOS, but that workflow has not run because the repository has not been published.
+- Linux and CUDA hardware were not available for this verification. The repository includes a [GitHub Actions matrix for Ubuntu and macOS](https://github.com/tim-osterhus/video-analysis-kit/actions). Release-time CI results are recorded below.
 - The faster-whisper CPU/CUDA adapter was tested with controlled substitutes, not real model inference. Its system-library requirements still need checking on the target worker.
 - The explicit model-download flow has automated tests; this live test reused existing, deeply verified MLX weights rather than downloading them again.
 - No live website extraction, authenticated media, long video, concurrency, or broad speech-accuracy benchmark was performed.
@@ -47,3 +47,7 @@ uv build
 Without `VIDEO_ANALYSIS_SMOKE=1`, the synthetic FFmpeg integration test is skipped. The other tests use controlled fixtures and do not require SSH, site access, or downloaded speech models. Dependency installation can require network access.
 
 For a real deployment, follow [agent setup](agent-setup.md), run the installed launcher's `doctor --deep` for a speech backend, and prepare a short video with known speech and visual content. Validate the returned local manifest, inspect its transcript and frames, then repeat `fetch` for SSH execution. Record the actual backend, operating system, tool versions, and limitations; do not infer Linux or CUDA verification from a successful macOS run.
+
+## Publication compatibility check
+
+The initial macOS CI run used FFmpeg 9 and exposed removal of `-vsync` in the vendored frame extractor. Both scene and keyframe extraction now use `-fps_mode`; the compatibility patch and hashes are recorded in the vendored snapshot and third-party notices. Regression tests exercise rejection of the removed option, and CI runs actual synthetic frame extraction on macOS and Ubuntu.
