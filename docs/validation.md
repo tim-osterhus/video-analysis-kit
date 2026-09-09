@@ -6,7 +6,7 @@ Verified on 2026-09-09. These checks describe this initial release; they are not
 
 | Check | Result |
 | --- | --- |
-| Python tests, including the opt-in FFmpeg smoke test | 100 passed on Apple Silicon macOS with Python 3.11 |
+| Python tests, including the opt-in FFmpeg smoke test | 102 passed on Apple Silicon macOS with Python 3.11 |
 | Ruff and skill metadata validation | Passed |
 | Source distribution and wheel build | Passed |
 | Fresh base-only wheel installation outside the checkout | CLI, packaged resources, and generated skill launcher worked; no yt-dlp, MLX, or faster-whisper installed on that client |
