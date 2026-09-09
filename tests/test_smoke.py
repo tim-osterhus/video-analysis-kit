@@ -47,11 +47,34 @@ def test_synthetic_video_prepares_and_validates(tmp_path):
     )
     prepared = subprocess.run(
         cli + ["prepare", str(video), "--max-frames", "2", "--detail", "efficient"],
-        check=True,
+        check=False,
         capture_output=True,
         text=True,
         timeout=120,
     )
+    if prepared.returncode:
+        # Preparation purges partial media. Replay this synthetic fixture directly
+        # to surface the underlying FFmpeg diagnostic in CI, without user media.
+        from video_intelligence.paths import UPSTREAM_WATCH
+
+        diagnostic = subprocess.run(
+            [
+                sys.executable,
+                str(UPSTREAM_WATCH),
+                str(video),
+                "--out-dir",
+                str(tmp_path / "diagnostic"),
+                "--detail",
+                "efficient",
+                "--max-frames",
+                "2",
+                "--no-whisper",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        pytest.fail(prepared.stderr + "\nUpstream diagnostic:\n" + diagnostic.stderr)
     result = json.loads(prepared.stdout)
     subprocess.run(cli + ["validate", result["manifest"]], check=True, capture_output=True)
     from pathlib import Path

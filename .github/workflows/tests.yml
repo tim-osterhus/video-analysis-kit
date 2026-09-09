@@ -3,6 +3,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-24.04, macos-14]
     runs-on: ${{ matrix.os }}
