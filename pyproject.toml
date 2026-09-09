@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "video-analysis"
+version = "0.1.0"
+description = "Video evidence preparation and agent analysis for macOS and Linux"
+requires-python = ">=3.11,<3.14"
+license = "MIT"
+authors = [{name = "Tim Osterhus", email = "tim@millrace.ai"}]
+dependencies = ["jsonschema==4.25.1"]
+
+[project.urls]
+Repository = "https://github.com/tim-osterhus/video-analysis-kit"
+Issues = "https://github.com/tim-osterhus/video-analysis-kit/issues"
+
+[project.optional-dependencies]
+worker = ["yt-dlp[curl-cffi,default,deno]==2026.8.19", "huggingface-hub>=0.34,<1"]
+mlx = ["video-analysis[worker]", "mlx-whisper==0.4.3; sys_platform == 'darwin' and platform_machine == 'arm64'"]
+cpu = ["video-analysis[worker]", "faster-whisper>=1.2,<2"]
+dev = ["pytest>=8.4,<9", "ruff>=0.12", "build>=1.2"]
+
+[project.scripts]
+video-analysis = "video_intelligence.frontend:main"
+video-intelligence = "video_intelligence.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/video_intelligence"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"skills/analyze-video" = "video_intelligence/resources/skill"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["src/video_intelligence/resources/vendor"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

@@ -1,0 +1,25 @@
+{
+  "repository": "https://github.com/bradautomates/claude-video",
+  "revision": "83da59fa78c3eee9e20f515fe75c438bb5166efd",
+  "files": {
+    "LICENSE": "add78957ea8124a8ae6eccd7a55c948543a9f32ea26917bf562b8cafacb01d3e",
+    "tests/test_dedup.py": "76e5f14250d123d50ca958825a767d33cf7f2142647aff4afef4ace9d0a969a4",
+    "tests/conftest.py": "bed84cea4137391d7e085c4b97f4d05422a921321cb8144e2783bb4b22f0deb7",
+    "tests/test_setup.py": "16f9beeb24eaec5788f71f2b7d1620fdfcc6cb1692bc0e930019de6bc0f5b39d",
+    "tests/test_download.py": "6dd4173666a6ce7f32b328cc4f43a9ad77a67b1b3100715c628006891db2e256",
+    "tests/test_frames.py": "103c31f509cc1b87ec428b3668fa4fbe3220ad251c35b5433319470fdea81cde",
+    "tests/test_watch.py": "00b523b066459e0154d403d2e047d0158f17b90f1247dd71395b90395b560b45",
+    "tests/test_timestamps.py": "34156b11c854b209ee48b84a14ec27791852bb9c3460876935986f41a415d400",
+    "tests/test_whisper.py": "592ec1efef720f5aea5b51ab47aac8ca7aa7e2d8003f479c4705432b2c022cb6",
+    "tests/test_config.py": "86c8be9cc09eb7ef5dbc08d387d12382f97159a58bd39bb6b3c7903e00f6674e",
+    "tests/test_fixtures.py": "4c9dcfdcdd76815ad781f6a42a78e6707ff6093e0ae389bce798d144c0f09fff",
+    "skills/watch/scripts/config.py": "a672f1b3b888ee90b696a2acd7ccba46556eeb7978be4a0cf205e0a7963e5140",
+    "skills/watch/scripts/build-skill.sh": "209155ca460d65daaf2d08c92b22701d083474a59e61d0c651d839d05f72b9d1",
+    "skills/watch/scripts/download.py": "e3db8c8418a0372a533fedaf6c4481c5859849c81279e0f6cb139e4055081f91",
+    "skills/watch/scripts/whisper.py": "4845e95d7467b1d4d393275a9d8fadda07d34c9822d6cee0b7ebebcfd70e1462",
+    "skills/watch/scripts/setup.py": "c8d2906fc4e8047c9d4006ac37572be5cbd0ae6ed11380743283e877564406b1",
+    "skills/watch/scripts/frames.py": "ad317574facd619ff0c5ccbbb86a08b76abc8419c81107d179dbe2a3ba526ae6",
+    "skills/watch/scripts/transcribe.py": "f9736e126d3f3c41d72cceed75e50b7bdeb0f8a9bdafe5bdbdd8592ea8af7ab6",
+    "skills/watch/scripts/watch.py": "22a617de949781067ba22d90b64355231cf09c92b3a144ee9c3a5e26f0062e3a"
+  }
+}

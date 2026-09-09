@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:video-analysis:schema:video-evidence-manifest:1.0",
+  "title": "Video Evidence Manifest",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "created_at",
+    "run_id",
+    "status",
+    "source",
+    "settings",
+    "provenance",
+    "transcript",
+    "artifacts"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.0"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "prepared"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "kind",
+        "value",
+        "metadata",
+        "content_sha256",
+        "content_hash_scope"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "url",
+            "local"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "content_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "content_hash_scope": {
+          "enum": [
+            "local-source-file",
+            "downloaded-media",
+            "unavailable"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "settings": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "wrapper_version",
+        "upstream_repository",
+        "upstream_commit",
+        "upstream_pin_matches",
+        "prompt_injection_boundary",
+        "tools"
+      ]
+    },
+    "transcript": {
+      "type": "object",
+      "required": [
+        "status",
+        "source"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

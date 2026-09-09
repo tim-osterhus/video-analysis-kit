@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+
+if [ -z "${VIDEO_INTELLIGENCE_REAL_YTDLP:-}" ]; then
+  echo "VIDEO_INTELLIGENCE_REAL_YTDLP is not set" >&2
+  exit 2
+fi
+
+YTDLP_RUNTIME_DIR=$(CDPATH= cd -- "$(dirname -- "$VIDEO_INTELLIGENCE_REAL_YTDLP")" && pwd)
+PATH="$YTDLP_RUNTIME_DIR:$PATH"
+export PATH
+
+exec "$VIDEO_INTELLIGENCE_REAL_YTDLP" \
+  --ignore-config \
+  --no-cookies \
+  --no-cookies-from-browser \
+  --no-remote-components \
+  --socket-timeout 30 \
+  --retries 3 \
+  --fragment-retries 3 \
+  --max-filesize 2G \
+  "$@"

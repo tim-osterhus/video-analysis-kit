@@ -1,0 +1,9 @@
+{
+  "backend": "mlx-whisper",
+  "package": "mlx-whisper==0.4.3",
+  "repository": "mlx-community/whisper-large-v3-turbo",
+  "revision": "a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+  "weights_file": "weights.safetensors",
+  "weights_sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
+  "install_path": ".runtime/models/whisper-large-v3-turbo"
+}

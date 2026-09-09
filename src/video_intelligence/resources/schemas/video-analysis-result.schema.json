@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:video-analysis:schema:video-analysis-result:1.0",
+  "title": "Video Analysis Result",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "request_id",
+    "job_mode",
+    "source_manifest",
+    "conclusion",
+    "evidence",
+    "recommendation",
+    "confidence",
+    "limitations"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "job_mode": {
+      "enum": [
+        "stack_relevance",
+        "competitor_creative",
+        "implementation_handoff"
+      ]
+    },
+    "source_manifest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conclusion": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "observation",
+          "evidence_type"
+        ],
+        "properties": {
+          "timestamp": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "observation": {
+            "type": "string"
+          },
+          "evidence_type": {
+            "enum": [
+              "shown",
+              "spoken",
+              "presenter_claim",
+              "external_verification"
+            ]
+          }
+        }
+      }
+    },
+    "stack_comparison": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "capability",
+          "classification",
+          "basis"
+        ],
+        "properties": {
+          "capability": {
+            "type": "string"
+          },
+          "classification": {
+            "enum": [
+              "already_supported",
+              "partially_supported",
+              "genuinely_missing",
+              "not_relevant",
+              "cannot_verify"
+            ]
+          },
+          "basis": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recommendation": {
+      "enum": [
+        "ignore",
+        "document",
+        "research",
+        "prototype",
+        "implement"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}
