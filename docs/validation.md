@@ -27,7 +27,7 @@ Model tests cover explicit download receipts, offline inference arguments, incom
 
 ## Remaining validation limits
 
-- Linux and CUDA hardware were not available for this verification. The repository includes a [GitHub Actions matrix for Ubuntu and macOS](https://github.com/tim-osterhus/video-analysis-kit/actions). Release-time CI results are recorded below.
+- Linux transcription and CUDA inference were not exercised; hosted Linux coverage is described below. The repository includes a [GitHub Actions matrix for Ubuntu and macOS](https://github.com/tim-osterhus/video-analysis-kit/actions). Release-time CI results are recorded below.
 - The faster-whisper CPU/CUDA adapter was tested with controlled substitutes, not real model inference. Its system-library requirements still need checking on the target worker.
 - The explicit model-download flow has automated tests; this live test reused existing, deeply verified MLX weights rather than downloading them again.
 - No live website extraction, authenticated media, long video, concurrency, or broad speech-accuracy benchmark was performed.
@@ -51,3 +51,5 @@ For a real deployment, follow [agent setup](agent-setup.md), run the installed l
 ## Publication compatibility check
 
 The initial macOS CI run used FFmpeg 9 and exposed removal of `-vsync` in the vendored frame extractor. Both scene and keyframe extraction now use `-fps_mode`; the compatibility patch and hashes are recorded in the vendored snapshot and third-party notices. Regression tests exercise rejection of the removed option, and CI runs actual synthetic frame extraction on macOS and Ubuntu.
+
+The [FFmpeg compatibility publication run](https://github.com/tim-osterhus/video-analysis-kit/actions/runs/34417821876) passed on Ubuntu 24.04 and macOS 14: all 102 tests, including actual synthetic video preparation and validation, passed on each runner; both package builds succeeded. This confirms Linux captions-only preparation in CI, not Linux speech-model or CUDA inference.
